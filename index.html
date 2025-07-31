@@ -2,29 +2,225 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Para mi Amor!</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Puedes añadir CSS personalizado aquí si es necesario */
-        
-        body {
-            font-family: 'Arial', sans-serif;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Libro Estilo Realista</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <svg width="0" height="0" style="position: absolute; display: none">
+      <defs>
+        <clipPath id="heartShape" clipPathUnits="objectBoundingBox">
+          <path
+            d="M0.5,1 C0.2,0.7 0,0.5 0,0.3 C0,-0.1 0.2,-0.1 0.5,0.1 C0.8,-0.1 1,-0.1 1,0.3 C1,0.5 0.8,0.7 0.5,1 Z"
+          />
+        </clipPath>
+      </defs>
+    </svg>
 </head>
 
-<body class="bg-gradient-to-r from-pink-300 to-purple-400 min-h-screen flex items-center justify-center">
-    <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-lg mx-auto">
-        <h1 class="text-4xl font-extrabold text-pink-600 mb-4">¡Hola, mi amor!</h1>
-        <p class="text-lg text-gray-700 mb-6">
-            ¡Qué bueno que escaneaste el código! Esto es solo el comienzo de algo muy especial que estoy preparando para ti. Espero que te guste mucho todo el esfuerzo y el cariño que le estoy poniendo.
-        </p>
-        <p class="text-md text-gray-600">
-            ¡Prepárate para más sorpresas! ❤️
-        </p>
-    </div>
+<body>
+    <div class="book" id="book">
+        <!-- Portada -->
+        <div class="cover" id="cover">
+            <!-- Imagen en forma de corazón - ESQUINA SUPERIOR DERECHA -->
+            <div class="heart-image top-right">
+                <img src="Images/amor1.1.jpg" alt="Foto corazón 1" />
+            </div>
+            <!-- Imagen en forma de corazón - ESQUINA INFERIOR IZQUIERDA -->
+            <div class="heart-image bottom-left">
+                <img src="Images/pastel1.1.jpg" alt="Foto corazón 2" />
+            </div>
+            <span style="font-size: 5.5rem; color: #a94442">S ❤L</span>
+            <div style="font-size: 3.5rem; margin-top: 10px; color: blue;font-family: 'Great Vibes', cursive;">
+                Nuestro Recuerdo
+            </div>
+            <br />
+            <div style="font-size: 3rem; margin-top: 10px; color: #b08b60">
+                Para mi amor bonito<br> __.__
+                <button class="abrir-btn book-edge-btn" onclick="openBook()">Abrir</button>
+            </div>
+        </div>
+
+
+        <!-- 1 Hoja -->
+        <div class="page" data-page-number="0">
+            <h2 style="color: #a94442; text-align: center;">Nuestro Álbum</h2>
+            <p>Mi amor bonito en esta fecha importante te expreso desde lo mas profundo de mi corazón, son los 7 meses más maravillosos que he podido pasar a tu lado. Eres una mujer increible, valiente, hermosa, inteligente, responsable y muchas mas cosas
+                que me quedo corto al expresarte. <br> No esta más que decir que eres todo lo que queria lo que anhelaba lo que ahora tengo y pienso conservar. <br> Gracias por llegar a mi vida mi chanchito mi patito hermoso. Te amo con todo mi corazón.</p>
+            <div class="galeria">
+                <img src="Images/123.jpg" alt="Foto 1" class="foto" />
+            </div>
+        </div>
+
+
+        <!-- 2 Hoja -->
+        <div class="page" data-page-number="1">
+            <h2 style="color: #a94442; text-align: center;">Nuestros Bellos Recuerdos</h2>
+            <p>Son increíbles los momentos que pasamos juntos mi chanchito, agradezco a Diosito por todo lo que pasamos.</p>
+            <div class="galeria galeria-grid">
+                <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 18px;">
+                    <div style="text-align:center;">
+                        <img src="Images/anillomanogorda.jpg" alt="Anillo Mano Gorda" class="foto1" style="max-width:120px; border-radius:10px;" />
+                        <div class="titulo-foto">Anillo Mano Gorda</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <img src="Images/batidos.jpg" alt="Batidos" class="foto1" style="max-width:120px; border-radius:10px;" />
+                        <div class="titulo-foto">Batidos</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <img src="Images/bonobon.jpg" alt="Bon o Bon" class="foto1" style="max-width:120px; border-radius:10px;" />
+                        <div class="titulo-foto">Bon o Bon</div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 18px;">
+                    <div style="text-align:center;">
+                        <img src="Images/latones.jpg" alt="Latones" class="foto1" style="max-width:120px; border-radius:10px;" />
+                        <div class="titulo-foto">Latones</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <img src="Images/primerviaje.jpg" alt="Primer Viaje" class="foto1" style="max-width:120px; border-radius:10px;" />
+                        <div class="titulo-foto">Primer Viaje</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <img src="Images/rosita.jpg" alt="Rosita" class="foto1" style="max-width:120px; border-radius:10px;" />
+                        <div class="titulo-foto">Rosita</div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center; gap: 12px;">
+                    <div style="text-align:center; width:120px;">
+                        <video id="miniVideo" muted loop width="100%" height="auto" style="border-radius:10px; max-width:120px; cursor:pointer;">
+                            <source src="Images/video 1.mp4">Tu navegador no soporta el video.
+                        </video>
+                        <div class="titulo-foto">Video Recuerdo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 3 Hoja  -->
+        <div class="page" data-page-number="2">
+            <h2 style="color: #a94442; text-align: center;">Momentos de Risa</h2>
+            <p>Otro momento inolvidable para recordar entre cuacs.</p>
+            <div class="galeria">
+                <div style="text-align:center;">
+                    <div class="titulo-foto">Cuac 1</div>
+                    <img src="Images/cuac1.jpg" alt="Foto 3" class="foto1" />
+                </div>
+                <div style="text-align:center;">
+                    <div class="titulo-foto">Cuac 2</div>
+                    <img src="Images/cuac2.jpg" alt="Foto 3" class="foto1" />
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 4 Hoja -->
+        <div class="page" data-page-number="3">
+            <h2 style="color: #a94442; text-align: center;">Cosas por la que te amo demasiado</h2>
+            <p>Nunca cambies mi amorcito chanchito hermoso. <br> Son muchas cosas por las que te amo, y a veces no te lo expreso pero en serio en serio te amo con todo mi corazón haria cualquier cosa por ti, lo que sea para hacerte feliz mi amor. <br> Haces
+                que sea una mejor persona con el amor que recibo, y quiero hacer bien las cosas contigo. No quiero perder a una mujer maravillosa como tú. <br> Soy de pocas palabras sabes amor, pero amo todo, cuando reimos, jugamos, paseamos, nos bromeamos,
+                chismoseamos, hacemos el amor, nos bañamos, cocinamos, nos aplastamos; son unicos los momentos que hacen que te ame cada día mas. Gracias por los hermosos detalles, los hermosos momentos que paso a tu lado, gracias gracias gracias. <br>
+                <h3>❤❤ Nunca olvides que te amo con todo mi corazón mi chanchito bello ❤❤</h3>
+            </p>
+            <div class="galeria">
+                <div style="display: flex; justify-content: center; gap: 24px;">
+                    <div style="text-align:center;">
+                        <div class="titulo-foto">Mi regalo precioso.</div>
+                        <img src="Images/regalochancho.jpg" alt="Foto 3" class="foto1" style="max-width: 140px; border-radius:10px;" />
+                    </div>
+                    <div style="text-align:center;">
+                        <div class="titulo-foto">Mi capibara.</div>
+                        <img src="Images/capibara.jpg" alt="Foto 3" class="foto1" style="max-width: 140px; border-radius:10px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="prev-btn book-edge-btn" id="prevBtn" style="display: none">
+            Anterior
+        </button>
+        <button class="next-btn book-edge-btn" id="nextBtn" style="display: none">
+            Siguiente
+        </button>
+        <button class="cerrar-libro-btn book-edge-btn" id="closeBookBtn" style="display: none">
+            Cerrar Libro
+        </button>
+        <script src="js.js"></script>
+        <!-- Audio de fondo -->
+        <audio id="audioFondo" src="Images/te voy amar.mp3" loop style="display:none;"></audio>
+        <!-- Modal para video grande (fuera de la galería, centrado y sin afectar otros elementos) -->
+        <div id="modalVideo" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center;">
+            <div style="position:relative; display:flex; flex-direction:column; align-items:center;">
+                <button id="cerrarModalVideo" style="position:absolute; top:-40px; right:0; background:#a94442; color:#fff; border:none; border-radius:50%; width:36px; height:36px; font-size:1.5rem; cursor:pointer; box-shadow:0 2px 8px #0003;">&times;</button>
+                <video id="videoGrande" controls style="max-width:80vw; max-height:70vh; border-radius:12px; background:#000; box-shadow:0 4px 24px #0005;">
+                    <source src="Images/video 1.mp4">Tu navegador no soporta el video.
+                </video>
+            </div>
+        </div>
+
+
+
+
+        <script>
+            // Modal video
+            const miniVideo = document.getElementById('miniVideo');
+            const modalVideo = document.getElementById('modalVideo');
+            const videoGrande = document.getElementById('videoGrande');
+            const cerrarModalVideo = document.getElementById('cerrarModalVideo');
+            if (miniVideo && modalVideo && videoGrande && cerrarModalVideo) {
+                // Reproducir audio de fondo al cargar la página
+                const audioFondo = document.getElementById('audioFondo');
+                if (audioFondo) {
+                    audioFondo.volume = 0.6;
+                    // Reproducir en el primer clic del usuario
+                    let audioIniciado = false;
+
+                    function iniciarAudioFondo() {
+                        if (!audioIniciado) {
+                            audioFondo.play().catch(() => {});
+                            audioIniciado = true;
+                        }
+                    }
+                    document.addEventListener('click', iniciarAudioFondo, {
+                        once: true
+                    });
+                }
+                // El video pequeño NO debe tener controles ni autoplay
+                miniVideo.removeAttribute('controls');
+                miniVideo.removeAttribute('autoplay');
+                miniVideo.pause();
+                miniVideo.currentTime = 0;
+                miniVideo.addEventListener('click', function() {
+                    modalVideo.style.display = 'flex';
+                    modalVideo.style.alignItems = 'center';
+                    modalVideo.style.justifyContent = 'center';
+                    videoGrande.currentTime = 0;
+                    videoGrande.muted = false;
+                    videoGrande.play();
+                    if (audioFondo && !audioFondo.paused) {
+                        audioFondo.pause();
+                    }
+                });
+                cerrarModalVideo.addEventListener('click', function() {
+                    modalVideo.style.display = 'none';
+                    videoGrande.pause();
+                    if (audioFondo && audioFondo.paused) {
+                        audioFondo.play().catch(() => {});
+                    }
+                });
+                // Cerrar modal al hacer click fuera del video
+                modalVideo.addEventListener('click', function(e) {
+                    if (e.target === modalVideo) {
+                        modalVideo.style.display = 'none';
+                        videoGrande.pause();
+                        if (audioFondo && audioFondo.paused) {
+                            audioFondo.play().catch(() => {});
+                        }
+                    }
+                });
+            }
+        </script>
 </body>
 
 </html>

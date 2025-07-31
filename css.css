@@ -1,0 +1,312 @@
+body {
+    background: url("https://www.transparenttextures.com/patterns/wood-pattern.png"), #f8f4f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Centra el libro verticalmente */
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    /* Evita barras de desplazamiento no deseadas */
+}
+
+.book {
+    width: 1100px;
+    /* Ancho total del libro abierto (aprox. doble ancho de una página) */
+    height: 650px;
+    position: relative;
+    perspective: 2000px;
+    /* Profundidad para el efecto 3D */
+    transform-style: preserve-3d;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-radius: 18px;
+    background: transparent;
+    transition: transform 1.5s ease;
+    /* Transición para la rotación inicial del libro si lo deseas */
+    transform-origin: center center;
+}
+
+
+/* --- Portada Original --- */
+
+.cover {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    /* La portada está inicialmente en la mitad derecha del "book" */
+    width: 46%;
+    /* La mitad del ancho del "book" */
+    height: 90%;
+    background-size: cover, auto;
+    /* Ajusta el tamaño de tu imagen de fondo si es necesario */
+    background-repeat: no-repeat, repeat;
+    z-index: 5;
+    /* Asegura que la portada esté encima cuando cerrada */
+    font-family: "Great Vibes", cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #7f4f24;
+    font-size: 2rem;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px 0 0 10px;
+    /* Bordes de la portada (solo el izquierdo) */
+    border: 3px dashed #b08b60;
+    padding: 30px 20px;
+    text-shadow: 1px 1px 2px #fff;
+    letter-spacing: 2px;
+    transition: transform 1s ease;
+    /* Transición para el giro de la portada */
+    transform-origin: left center;
+    /* El pivote de giro es el lomo */
+    backface-visibility: hidden;
+    /* Oculta el reverso cuando gira */
+}
+
+
+/* Esto asegura que el texto se vea bien en la portada */
+
+.cover div {
+    font-family: 'Great Vibes', cursive;
+    text-align: center;
+    white-space: nowrap;
+    /* Evita que el texto se rompa en varias líneas */
+}
+
+
+/* --- Clase base para botones que "sobresalen" del borde --- */
+
+.book-edge-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* Centra verticalmente */
+    padding: 10px 18px;
+    background: #a94442;
+    /* Color de fondo */
+    color: #fff;
+    border: none;
+    font-family: "Great Vibes", cursive;
+    font-size: 1.2rem;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    z-index: 100;
+    /* Siempre encima de las páginas */
+    transition: background 0.3s ease;
+}
+
+.book-edge-btn:hover {
+    background: #c05856;
+    /* Color al pasar el ratón */
+}
+
+
+/* Estilo para el botón Abrir en la portada (usa la clase base) */
+
+.abrir-btn {
+    /* Mantiene las propiedades específicas de posición y borde-radius */
+    right: -25px;
+    border-radius: 0 10px 10px 0;
+}
+
+
+/* Asegurarse de que el botón Abrir en el HTML ahora use la clase `book-edge-btn` */
+
+
+/* Cuando la portada está volteada */
+
+.cover.flipped {
+    transform: rotateY(-180deg);
+    z-index: 1;
+    /* La portada volteada se queda "debajo" de las páginas */
+}
+
+
+/* --- Estilos para todas las Páginas Internas --- */
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    /* Todas las páginas se posicionan en el lado derecho del libro */
+    width: 50%;
+    /* Cada página ocupa la mitad del ancho del book */
+    height: 100%;
+    background: #fffbe6;
+    /* Color de papel para las páginas */
+    padding: 30px 30px 30px 50px;
+    box-sizing: border-box;
+    box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.1);
+    /* Sombra para el lado derecho de la página */
+    border-radius: 0 10px 10px 0;
+    /* Solo el lado derecho redondeado */
+    border-left: 6px solid #b08b60;
+    /* Borde del lomo de la página */
+    font-family: "Great Vibes", cursive;
+    color: #7f4f24;
+    transform-origin: left center;
+    /* El pivote de giro es el lomo */
+    transition: transform 1s ease, z-index 0.01s 0.5s;
+    /* Transición para volteo y z-index */
+    backface-visibility: hidden;
+    /* Oculta el reverso por defecto */
+    /* Ocultar todas las páginas por defecto */
+    visibility: hidden;
+    transform: rotateY(0deg);
+    /* Asegura que estén al frente inicialmente */
+    z-index: 0;
+    /* Baja z-index para páginas no activas */
+}
+
+
+/* Parte trasera de la página (la que se ve a la izquierda al voltear) */
+
+.page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fdf8e8;
+    /* Color ligeramente diferente para el reverso */
+    transform: rotateY(180deg);
+    /* La parte trasera gira 180 grados */
+    backface-visibility: hidden;
+    z-index: -1;
+    /* Asegura que esté detrás del contenido principal de la página */
+    border-radius: 0 10px 10px 0;
+    /* Mantener bordes redondeados */
+    border-right: 6px solid #b08b60;
+    /* Borde al reverso */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    /* Sombra para el reverso */
+}
+
+
+/* Clases para controlar el estado de las páginas con JS */
+
+.page.current-right {
+    /* Página actual visible a la derecha */
+    visibility: visible;
+    transform: rotateY(0deg);
+    z-index: 4;
+    /* Encima de las volteadas */
+}
+
+.page.flipped-right {
+    /* Página que se ha volteado y ahora está a la izquierda (reverso visible) */
+    visibility: visible;
+    /* Debe ser visible para mostrar su ::before */
+    transform: rotateY(-180deg);
+    z-index: 2;
+    /* Se coloca debajo de la página current-right */
+}
+
+
+/* --- Estilos de Contenido de Página --- */
+
+.page h2 {
+    margin-top: 0;
+    font-size: 2.2rem;
+    font-family: "Great Vibes", cursive;
+    color: #a94442;
+    text-shadow: 1px 1px 2px #fffbe6;
+}
+
+.page p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.galeria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.galeria .foto {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    border: 3px solid #d4b8ee;
+}
+
+.galeria .foto1 {
+    max-width: 30%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    border: 3px solid #d4b8ee;
+}
+
+
+/* --- Estilos específicos para los botones de navegación --- */
+
+
+/* Botón Anterior */
+
+.prev-btn {
+    left: -25px;
+    /* Sale por el lado izquierdo del libro */
+    border-radius: 10px 0 0 10px;
+    /* Borde redondeado a la izquierda */
+}
+
+
+/* Botón Siguiente */
+
+.next-btn {
+    right: -25px;
+    /* Sale por el lado derecho del libro */
+    border-radius: 0 10px 10px 0;
+    /* Borde redondeado a la derecha */
+}
+
+
+/* Botón Cerrar Libro */
+
+.cerrar-libro-btn {
+    top: 20px;
+    /* Posicionado desde arriba */
+    left: -25px;
+    /* Sale por el lado izquierdo del libro */
+    transform: translateY(0);
+    /* Anula el translateY(-50%) de book-edge-btn */
+    border-radius: 10px 0 0 10px;
+    /* Borde redondeado a la izquierda */
+}
+
+
+/* Formato de la imagen */
+
+.heart-image {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    overflow: hidden;
+    pointer-events: none;
+    clip-path: path("M75 22.5C75 0 150 0 150 56.25C150 112.5 75 150 75 150C75 150 0 112.5 0 56.25C0 0 75 0 75 22.5Z");
+    -webkit-clip-path: path("M75 22.5C75 0 150 0 150 56.25C150 112.5 75 150 75 150C75 150 0 112.5 0 56.25C0 0 75 0 75 22.5Z");
+}
+
+.heart-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.heart-image.top-right {
+    top: 0px;
+    right: 0px;
+}
+
+.heart-image.bottom-left {
+    bottom: 0px;
+    left: 0px;
+}
